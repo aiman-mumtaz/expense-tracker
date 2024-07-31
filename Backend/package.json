@@ -5,7 +5,7 @@
   "scripts": {
     "start": "nodemon app.js"
   },
-  "author": "",
+  "author": "aiman-mumtaz",
   "license": "ISC",
   "description": "",
   "dependencies": {
