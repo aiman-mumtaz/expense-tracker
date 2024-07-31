@@ -32,10 +32,11 @@ export default function BackgroundAnimation() {
     // background : linear-gradient(180deg,#E2DAD6 0%, #F5EDED 100%); cream
     // background : linear-gradient(180deg,#03346E 0%, #6EACDA 100%); blue
     // background: linear-gradient(180deg,#F56692 0%, #F2994A 100%); red
-    background : linear-gradient(180deg,#88D66C 0%, #B4E380 100%);
-    filter: blur(200px);
+    // background : linear-gradient(180deg,#88D66C 0%, #B4E380 100%); green
+    background : linear-gradient(180deg,#2E236C 0%, #03346E 100%);
+    filter: blur(400px);
     border-radius : 50%;
-    animation : ${animate} 5s alternate linear infinite;
+    animation : ${animate} 15s alternate linear infinite;
   `;
   return (
     <BackgroundStyled/>

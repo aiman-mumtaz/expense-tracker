@@ -1,6 +1,7 @@
 import styled from "styled-components";
-// import { MainLayout } from './styles/Layouts';
+import { MainLayout } from './styles/Layouts';
 import BackgroundAnimation from "./components/BackgroundAnimation/BackgroundAnimation";
+import Navigation from "./components/Navigation/Navigation";
 
 function App() {
   const AppStyled = styled.div`
@@ -21,9 +22,9 @@ function App() {
   return (
     <AppStyled className="App">
       <BackgroundAnimation/>
-      {/* <MainLayout> */}
-      {/* <h1>Hi</h1> */}
-      {/* </MainLayout> */}
+      <MainLayout>
+        <Navigation/>
+      </MainLayout>
     </AppStyled>
   );
 }
