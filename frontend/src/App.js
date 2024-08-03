@@ -1,4 +1,6 @@
+import { useMemo, useState } from "react";
 import styled from "styled-components";
+import bg from './img/bg.png'
 import { MainLayout } from './styles/Layouts';
 import BackgroundAnimation from "./components/BackgroundAnimation/BackgroundAnimation";
 import Navigation from "./components/Navigation/Navigation";
@@ -6,6 +8,7 @@ import Navigation from "./components/Navigation/Navigation";
 function App() {
   const AppStyled = styled.div`
     height: 100vh;
+    background-image: url(${props => props.bg});
     position: relative;
     main{
       flex: 1;
@@ -19,11 +22,14 @@ function App() {
       }
     }
   `;
+  
+  const [active,setActive] = useState(1);
+
   return (
-    <AppStyled className="App">
+    <AppStyled bg={bg} className="App">
       <BackgroundAnimation/>
       <MainLayout>
-        <Navigation/>
+        <Navigation active={active} setActive={setActive} />
       </MainLayout>
     </AppStyled>
   );

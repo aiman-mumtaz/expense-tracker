@@ -3,22 +3,20 @@ import styled from 'styled-components'
 import { menuItems } from '../../utils/menuItems';
 import { logout } from '../../utils/icons';
 
-export default function Navigation() {
+export default function Navigation({ active, setActive }) {
     const NavStyled = styled.nav`
-        width : 375px;
-        padding: 20px 10px;
+        padding: 2rem 1.5rem;
+        width: 374px;
         height: 100%;
-        border-radius: 20px;
         background: rgba(234, 232, 239, .78);
-        border : 3px solid #ffffff;
+        border : 3px solid #FFFFFF;
         backdrop-filter: blur(4.5px);
+        border-radius: 20px;
         display: flex;
         flex-direction: column;
-        // align-items: center;
-        justify-content : space-between;
-        gap:2rem;
-        
-    .userContainer {
+        // justify-content: space-between;
+        gap: 2rem;
+    .userContainer {    
         height: 100px;
         display: flex;
         align-items: center;
@@ -33,12 +31,58 @@ export default function Navigation() {
             padding: .2rem;
             box-shadow: 0px 1px 17px rgba(0, 0, 0, 0.06);
         }
+        h2{
+            color : #063970;
+        }
+        p{
+            color: rgba(6, 57, 112, .6);
+        }
+    }
+    .menuItems{
+        flex:1;
+        display:flex;
+        flex-direction:column;
+        li{
+            display:grid;
+            grid-template-columns: 40px auto;
+            align-items: center;
+            margin: .6rem 0;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all .4s ease-in-out;
+            color: rgba(6, 57, 112, .6);
+            padding-left: 1rem;
+            position: relative;
+            i{
+                color: rgba(6, 57, 112, .6);
+                font-size: 1.4rem;
+                transition: all .4s ease-in-out;
+            }
+        }
+    }
+    .active{
+        color: rgba(6, 57, 112, 1) !important;
+        i{
+            color: rgba(6, 57, 112, 1) !important;
+        }
+        &::before{
+            content: "";
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 4px;
+            height: 100%;
+            background: #063970;
+            border-radius: 0 10px 10px 0;
+        }
     }
     `;
+
+
   return (
     <NavStyled>
         <div className='userContainer'>
-            <img src='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRkfU6QUaoLZ2rLSY3nevyzqHCp4vvg_ozc8Q&s'></img>
+            <img alt='avatar' src='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRkfU6QUaoLZ2rLSY3nevyzqHCp4vvg_ozc8Q&s'></img>
             <div className='userInfo'>
                 <h2>Aiman</h2>
                 <p>Balance</p>
@@ -47,10 +91,12 @@ export default function Navigation() {
         <ul className='menuItems'>
             {
             menuItems.map((item)=>{
-                return <li key={item.id}>
+                return (
+                <li onClick={()=>setActive(item.id)} key={item.id} className={active === item.id ? 'active':null}>
                     {item.icon}
                     <span>{item.title}</span>
                 </li>
+                )
             })
             }
         </ul>
